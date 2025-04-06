@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Tiny BLossom Daycare Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        
+        /* Hero Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .slide-container {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slide 12s infinite;
+        }
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        @keyframes slide {
+            0%, 33% { transform: translateX(0%); }
+            34%, 66% { transform: translateX(-100%); }
+            67%, 100% { transform: translateX(-200%); }
+        }
+
+        /* Search Box */
+        .search-container {
+            position: relative;
+            width: 280px;
+        }
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: none;
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .search-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-item:hover, .search-item.active {
+            background: #f3f4f6;
+        }
+        .highlight {
+            background: yellow;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="LOGO.jpg" alt="Tiny Blossom Daycare" class="h-12">
+                <span class="ml-2 text-green-700 font-bold text-xl">Tiny Blossom Daycare</span>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchBar" class="p-2 border rounded-lg w-full focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Search services or plants..." oninput="searchItems()" onkeydown="navigateResults(event)">
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            <ul class="flex space-x-4">
+                <li><a class="text-green-700 font-bold" href="index.html">HOME</a></li>
+                <li><a class="text-gray-700" href="about.html">ABOUT US</a></li>
+                <li><a class="text-gray-700" href="services.html">SERVICES</a></li>
+                <li><a class="text-gray-700" href="contact.html">CONTACT US</a></li>
+                <li><a href="cart.html" class="text-gray-700 font-bold">🛒 CART (<span id="cartCount">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- chatbox -->
+    <!-- Floating Chatbot Icon -->
+<div id="chatbot-icon" class="fixed bottom-6 right-6 w-16 h-16 bg-green-700 rounded-full shadow-lg flex items-center justify-center cursor-pointer">
+    🌳
+</div>
+
+<!-- Chatbot Window -->
+
+
+
+<script src="chatbot.js"></script>
+
+    <!-- Hero Section with Sliding Images -->
+    <section class="slider">
+        <div class="slide-container">
+            <div class="slide">
+                <img src="f2.jpg" width="1599" height="auto">
+            </div>
+        
+
+
+            <div class="slide">
+                <img src="toolsphoto.webp" alt="Gardening Tools" width="1515" height="auto">
+            </div>
+            <div class="slide">
+                <img src="Plantsmain.jpg" alt="Gardening Tools" width="1550" height="auto">
+            </div>
+        </div>
+    </section>
+    <!-- product -->
+    <section class="container mx-auto my-12">
+        <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Our Products</h2>
+        <div class="container mx-auto px-4 py-12 overlay">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Plant Sales -->
+                <a href="plants.html" class="bg-white p-6 shadow-lg rounded-lg service-card text-center block">
+                    <img src="planstsales.jpg" alt="Plant Sales" class="w-full h-50 object-cover rounded">
+                    <h2 class="text-xl font-bold text-green-700 mt-4">Plant</h2>
+                    <p class="mt-2 text-gray-600">Discover a variety of indoor and outdoor plants. Starting from ₹299.</p>
+                </a>
+                <a href="tools.html" class="bg-white p-6 shadow-lg rounded-lg service-card text-center block">
+                    <img src="gtools (1).jpg" alt="Gardening Tools" class="w-full h object-cover rounded">
+                    <h2 class="text-xl font-bold text-green-700 mt-4">Gardening Tools</h2>
+                    <p class="mt-2 text-gray-600">High-quality gardening tools and accessories. Starting from ₹499.</p>
+                </a>
+                  <a href="maintenance.html" class="bg-white p-6 shadow-lg rounded-lg service-card text-center block">
+                    <img src="maintain.jpg" alt="Garden Maintenance" class="w-full h object-cover rounded">
+                    <h2 class="text-xl font-bold text-green-700 mt-4">Garden Maintenance</h2>
+                    <p class="mt-2 text-gray-600">Expert services to keep your plants healthy. Starting from ₹999.</p>
+                </a>
+                <a href="landscaping.html" class="bg-white p-6 shadow-lg rounded-lg service-card text-center block">
+                    <img src="landscape.jpg" class="w-full h object-cover rounded">
+                    <h2 class="text-xl font-bold text-green-700 mt-4">Customized Landscaping</h2>
+                    <p class="mt-2 text-gray-600">Personalized garden designs. Starting from ₹4,999.</p>
+                </a>
+</div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="container mx-auto my-12">
+        <h2 class="text-3xl font-bold text-center text-green-700 mb-6">Customer Reviews</h2>
+        <div class="bg-white shadow-lg rounded-lg p-6 relative overflow-hidden">
+            <div class="review-slider">
+                <div class="review">
+                    <p class="text-lg font-bold">🌟🌟🌟🌟🌟</p>
+                    <p class="text-gray-600 mt-2">"Amazing plants and great service!"</p>
+                    <p class="text-green-700 font-bold mt-1">- Ramesh Kumar</p>
+                </div>
+                <div class="review">
+                    <p class="text-lg font-bold">🌟🌟🌟🌟</p>
+                    <p class="text-gray-600 mt-2">"Fast delivery and healthy plants."</p>
+                    <p class="text-green-700 font-bold mt-1">- Priya Sharma</p>
+                </div>
+                <div class="review">
+                    <p class="text-lg font-bold">🌟🌟🌟🌟🌟</p>
+                    <p class="text-gray-600 mt-2">"Best nursery in town!"</p>
+                    <p class="text-green-700 font-bold mt-1">- Arjun Verma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Chatbot Button -->
+<button id="chatbot-btn">💬 Chat with Plant AI</button>
+
+<!-- Chatbot Window -->
+<div id="chatbot-container">
+    <div id="chatbot-header">
+        <span>Plant AI Assistant</span>
+        <button id="chatbot-close">&times;</button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <input type="text" id="chatbot-input" placeholder="Ask about plants..." />
+    <button id="chatbot-send">Send</button>
+</div>
+
+<!-- Link JavaScript -->
+<script src="chatbot.js"></script>
+
+
+<!-- Link Chatbot CSS -->
+<link rel="stylesheet" href="chatbot.css">
+<!-- Link Chatbot JavaScript -->
+<script src="chatbot.js"></script>
+
+
+
+
+    <!-- Search Functionality -->
+    <script>
+        const searchItemsData = [
+            { name: "Aloe Vera", category: "Plant", url: "plants.html" },
+            { name: "Bamboo Palm", category: "Plant", url: "plants.html" },
+            { name: "Terrace Plants", category: "Plant", url: "plants.html" },
+            { name: "Date Palm", category: "Plant", url: "plants.html" },
+            { name: "Adenium", category: "Plant", url: "plants.html" },
+            { name: "Decor Plants", category: "Plant", url: "plants.html" },
+            { name: "Bonsai", category: "Plant", url: "plants.html" },
+            { name: "Bougainvillea", category: "Plant", url: "plants.html" },
+            { name: "Fittonia", category: "Plant", url: "plants.html" },
+            { name: "Philodendron", category: "Plant", url: "plants.html" },
+            { name: "Sandpaper Vine", category: "Plant", url: "plants.html" },
+            { name: "Camellia", category: "Plant", url: "plants.html" },
+            { name: "Indoor Plants", category: "Plant", url: "plants.html" },
+            { name: "Garden showel", category: "Product", url: "tools.html" },
+            { name: "Gardening Tool Set", category: "Product", url: "tools.html" },
+            { name: "Tool Set", category: "Product", url: "tools.html" },
+            { name: "Garten", category: "Product", url: "tools.html" },
+            { name: "Gardening gloves and cuter", category: "Product", url: "tools.html" },
+            { name: "Spreader", category: "Product", url: "tools.html" },
+            { name: "Gardening Scissors", category: "Product", url: "tools.html" },
+            { name: "Gardening Twister", category: "Product", url: "tools.html" },
+            { name: "Grass Fiskars", category: "Product", url: "tools.html" },{ name: "Indoor Tool Set", category: "Product", url: "tools.html" },
+            { name: "Lawn Mowing", category: "Service", url: "maintenance.html" },
+            { name: "Garden Design", category: "Service", url: "maintenance.html" },
+            { name: "Soil Testing", category: "Service", url: "maintenance.html" },
+            { name: "Soil Testing", category: "Service", url: "maintenance.html" },
+        ];
+
+        let selectedIndex = -1;
+
+function searchItems() {
+    const query = document.getElementById("searchBar").value.toLowerCase();
+    const resultsContainer = document.getElementById("searchResults");
+    resultsContainer.innerHTML = "";
+    resultsContainer.style.display = "none";
+    selectedIndex = -1;
+
+    if (query.length > 0) {
+        const filteredItems = searchItemsData.filter(item =>
+            item.name.toLowerCase().includes(query)
+        );
+
+        if (filteredItems.length > 0) {
+            resultsContainer.style.display = "block";
+            filteredItems.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.classList.add("search-item");
+                div.innerHTML = highlightMatch(item.name, query) + ` <span class="text-gray-500">(${item.category})</span>`;
+                div.setAttribute("data-url", item.url);
+                div.setAttribute("data-index", index);
+                div.onclick = () => window.location.href = item.url;
+                resultsContainer.appendChild(div);
+            });
+        }
+    }
+}
+
+function highlightMatch(text, query) {
+    const regex = new RegExp(`(${query})`, "gi");
+    return text.replace(regex, "<span class='highlight'>$1</span>");
+}
+
+function navigateResults(event) {
+    const resultsContainer = document.getElementById("searchResults");
+    const items = resultsContainer.getElementsByClassName("search-item");
+
+    if (event.key === "ArrowDown") {
+        selectedIndex = (selectedIndex + 1) % items.length;
+        updateActiveItem(items);
+    } else if (event.key === "ArrowUp") {
+        selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+        updateActiveItem(items);
+    } else if (event.key === "Enter") {
+        event.preventDefault();
+        if (selectedIndex >= 0) {
+            window.location.href = items[selectedIndex].getAttribute("data-url");
+        } else if (items.length > 0) {
+            window.location.href = items[0].getAttribute("data-url");
+        }
+    }
+}
+
+function updateActiveItem(items) {
+    Array.from(items).forEach((item, index) => {
+        item.classList.toggle("active", index === selectedIndex);
+    });
+}
+
+document.addEventListener("click", function (event) {
+    if (!event.target.closest(".search-container")) {
+        document.getElementById("searchResults").style.display = "none";
+    }
+});
+    </script>
+</body>
+</html>
+       

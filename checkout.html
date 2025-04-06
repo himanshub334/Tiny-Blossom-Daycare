@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Tiny Blossom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <nav class="bg-white shadow-md p-4">
+        <ul class="flex justify-center space-x-4">
+            <li><a href="index.html" class="text-green-700 font-bold">HOME</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mx-auto mt-10 text-center">
+        <h1 class="text-3xl font-bold text-green-700">Checkout</h1>
+        <p class="mt-4 text-gray-700">Enter your details to complete the purchase.</p>
+    </div>
+
+    <form class="container mx-auto mt-6 p-6 bg-white shadow-md rounded-lg">
+        <label class="block text-gray-700">Full Name</label>
+        <input type="text" class="w-full p-2 border rounded mt-1" required>
+
+        <label class="block text-gray-700 mt-4">Address</label>
+        <textarea class="w-full p-2 border rounded mt-1" required></textarea>
+
+        <button onclick="completeOrder()" class="bg-green-600 text-white px-6 py-2 rounded-full mt-6">Complete Purchase</button>
+    </form>
+
+    <script>
+        function completeOrder() {
+            localStorage.removeItem("cart");
+            alert("Purchase Successful!");
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>
